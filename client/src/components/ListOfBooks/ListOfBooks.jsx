@@ -20,7 +20,6 @@ const ListOfBooks = ({book, saved, savedPage, searchPage}) => {
     setErrorMessage({type: '', error: ''});
     if (book.title && book.id) {
       const fetchBooks = await getBooksApi();
-      console.log('all books', fetchBooks.data.result);
       const previouslySaved = fetchBooks?.data?.result?.filter((b => b.id === book.id)) || [];
       if(previouslySaved.length === 0) {
         await saveBookApi(book)
