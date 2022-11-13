@@ -11,11 +11,13 @@ const ListOfBooks = ({book, saved, savedPage, searchPage}) => {
   const [showError, setShowError] = useState(false);
   const [errorMessage, setErrorMessage] = useState({type: '', error: ''});
   const [showSaveConfirm, setShowSaveConfirm] = useState(false);
+  const [saveDisable, setSaveDisable] = useState(false);
   const bookObject = saved ? book : createBookObject(book);
   const time1 = 1500;
   const time2 = 2000;
 
   const saveBook = async (book, searchPage) => {
+    setSaveDisable(true);
     setShowError(false);
     setErrorMessage({type: '', error: ''});
     if (book.title && book.id) {
@@ -60,7 +62,7 @@ const ListOfBooks = ({book, saved, savedPage, searchPage}) => {
                       </span>
                       { !saved ? 
                         <span>
-                            <button className="ui primary button" onClick={() => saveBook(bookObject, searchPage)}>
+                            <button disabled={saveDisable} className="ui primary button" onClick={() => saveBook(bookObject, searchPage)}>
                             Save
                             </button>
                         </span>
