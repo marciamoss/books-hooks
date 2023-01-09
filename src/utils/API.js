@@ -1,8 +1,6 @@
 import axios from 'axios';
 
-const BASE_URL = process.env.REACT_APP_VERCEL_URL
-  ? `https://${process.env.REACT_APP_VERCEL_URL}/api`
-  : 'http://localhost:9000/api';
+const BASE_URL = "https://books-hooks-mongo.vercel.app/api";
 
 export const deleteBookApi = (id) => axios.delete(`${BASE_URL}/books/${id}`);
 
